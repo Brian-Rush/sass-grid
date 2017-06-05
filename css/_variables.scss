@@ -1,0 +1,14 @@
+// grid variables
+$grid-columns: 4;
+$grid-max-width: 65em;
+
+
+// breakpoints
+$breakpoint-small: "only screen and (min-width: 20em)";
+$breakpoint-medium: "only screen and (min-width: 30em)";
+
+//column variables
+$column-margin: 2%;
+@function column-margin-sum($i, $grid-columns) {
+  @return ((100% - (4 * $i)) / $grid-columns) * $i;
+}

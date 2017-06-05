@@ -1,0 +1,67 @@
+@import "variables";
+@import "mixins";
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  @include border-box;
+  }
+
+  *:not(html):not(body) {
+    border: red dashed 1px;
+  }
+
+
+
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto !important;
+  }
+
+.wrapper,
+.row {
+  @extend %clearfix;
+}
+
+.wrapper {
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.wrapper:after,
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+[class*='column-'] {
+    float: left;
+    padding: 1em;
+    width: 100%;
+    min-height: 1px;
+    background-color: lightblue;
+    margin: $column-margin;
+    }
+
+
+  @media #{$breakpoint-medium} {
+    .wrapper {
+         width: 95%;
+         max-width: $grid-max-width;
+         }
+
+   @for $i from 1 through $grid-columns {
+
+       .column-#{$i} {
+             width: 100% / $grid-columns * $i;
+            //  width: (100 -(4 * $grid-columns))  / $grid-columns;
+           }
+
+   }
+
+
+  }
