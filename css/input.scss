@@ -58,6 +58,8 @@ img {
 
        .column-#{$i} {
              width: 100% / $grid-columns * $i;
+
+             //attempt at creating a function to set width of columns when margins are present
             //  width: (100 -(4 * $grid-columns))  / $grid-columns;
            }
 
