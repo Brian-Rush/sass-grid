@@ -1,0 +1,24 @@
+
+//adds widths of all horizontal (left and right) margins of all columns
+@function column-margin-sum($grid-columns, $column-margin) {
+  @return 2 * $grid-columns * $column-margin-unit-free;
+}
+
+@function available-non-margin-width() {
+  @return 100 - column-margin-sum();
+}
+
+@function column-width($i, $grid-columns) {
+  @return (available-non-margin-width()/ $grid-columns * $i)#{percent};
+}
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
